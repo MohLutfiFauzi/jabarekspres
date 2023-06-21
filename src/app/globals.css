@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Untuk browser WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Lebar scrollbar */
+  }
+  
+  /* Track (background) */
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Warna latar belakang track */
+  }
+  
+  /* Thumb (grip) */
+  ::-webkit-scrollbar-thumb {
+    background-color: red; /* Warna thumb */
+    border-radius: 4px; /* Bulatan sudut thumb */
+  }
+  
+  /* Ketika thumb sedang dihover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(152, 1, 1); /* Warna thumb saat dihover */
+  }
+
+  @media (min-width: 768px) {
+    ::-webkit-scrollbar {
+        height: 6px;
+      }
+}
+
+@layer utilities {
+  .post-content p {
+    @apply pb-3 text-base;
+  }
+
+  .post-content a {
+    @apply  text-red-500 hover:underline;
+  }
+
+  .post-content ul {
+    @apply pb-3 list-disc list-inside text-slate-900;
+  }
+
+  .post-content ol {
+    @apply pb-3 list-decimal list-inside text-slate-900;
+  }
+
+  .post-content h1 {
+    @apply text-2xl pt-4 font-semibold text-slate-900;
+  }
+
+  .post-content h2 {
+    @apply text-xl pt-4 font-semibold text-slate-900;
+  }
+
+  .post-content h3 {
+    @apply text-lg pt-4 font-semibold text-slate-900;
+  }
+
+  .post-content h4 {
+    @apply text-base pt-4 font-semibold text-slate-900;
+  }
+
+  .post-content figure {
+    @apply pb-4;
+  }
+
+  .post-content figure figcaption {
+    @apply text-center py-2;
+  }
+}
