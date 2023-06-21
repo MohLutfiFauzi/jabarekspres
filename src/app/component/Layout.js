@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar"
 import Tag from "./Tag"
 import Title from "./Title"
 import Link from 'next/link'
-import { getPostList, getTagsPopular, getMenuPrimary, getMenuFooter } from '../lib/query'
+import { getPostList, getTagsPopular, getMenuPrimary, getMenuFooter } from '../../../lib/query'
 
 export async function postsList() {
     const posts = await getPostList();

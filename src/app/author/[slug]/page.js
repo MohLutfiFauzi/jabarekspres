@@ -1,6 +1,6 @@
 import Layout from '@/app/component/Layout'
 import React from 'react'
-import { getPostByAuthor } from "@/app/lib/query"
+import { getPostByAuthor } from "../../../../lib/query"
 import Post from '@/app/component/Post'
 import SecondaryButton from '@/app/component/LoadMoreButton'
 

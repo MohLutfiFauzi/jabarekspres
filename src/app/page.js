@@ -4,7 +4,7 @@ import Post from "./component/Post"
 import LoadMoreButton from "./component/LoadMoreButton"
 import Title from "./component/Title"
 import Layout from "./component/Layout"
-import { getPostList } from "./lib/query"
+import { getPostList } from "../../lib/query"
 
 export const dynamic = 'force-dynamic'
 

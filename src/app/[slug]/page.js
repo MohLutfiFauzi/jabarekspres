@@ -3,7 +3,7 @@ import Layout from "../component/Layout"
 import DefaultImage from "../../../public/images/default.jpg"
 import Link from 'next/link'
 import Image from 'next/image'
-import { getSinglePost, getForMetadata, getStaticPage } from "../lib/query"
+import { getSinglePost, getForMetadata, getStaticPage } from "../../../lib/query"
 import Tag from '../component/Tag'
 import moment from 'moment'
 
