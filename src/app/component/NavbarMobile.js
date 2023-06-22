@@ -4,10 +4,18 @@ import React, { useState } from 'react'
 import logo from '/public/images/rakcer-logo.png'
 import { HiBars3, HiXMark, HiChevronDown, HiChevronUp } from 'react-icons/hi2'
 import Link from 'next/link'
+import { getMenuPrimary } from '../../../lib/query'
 
-const NavbarMobile = ({ menus }) => {
+export async function allMenuPrimary() {
+    const menusPrimary = await getMenuPrimary();
+
+    return menusPrimary
+}
+
+const NavbarMobile = async () => {
     const [toggle, setToggle] = useState(false)
     const [toggleSubMenu, setToggleSubMenu] = useState(false)
+    const menus = await allMenuPrimary()
 
     const handleToggle = () => {
         setToggle(!toggle);

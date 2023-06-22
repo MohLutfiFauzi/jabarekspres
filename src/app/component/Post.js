@@ -29,7 +29,7 @@ const Post = ({ title, excerpt, slug, featuredImage, date }) => {
             {
                 featuredImage.node.mediaDetails.sizes[0].sourceUrl ?
                     <Link href={slug} className='mr-2 mb-4'>
-                        <div className='relative w-20 h-20 md:w-32 md:h-32 lg:h-44 lg:w-44'>
+                        <div className='relative w-20 h-20 md:w-32 md:h-32 lg:w-44 lg:h-44 '>
                             <Image src={featuredImage.node.mediaDetails.sizes[0]?.sourceUrl} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} preload="true" placeholder="blur" blurDataURL={featuredImage.node.mediaDetails.sizes[0]?.sourceUrl} alt={featuredImage.node.altText ? featuredImage.node.altText : 'image'} />
                         </div>
                     </Link>

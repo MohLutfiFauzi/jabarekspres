@@ -2,9 +2,18 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
+import { getMenuFooter } from '../../../lib/query'
 
-const Footer = ({ menus }) => {
+export async function allMenuFooter() {
+    const menuFooter = await getMenuFooter();
+
+    return menuFooter
+}
+
+
+const Footer = async () => {
     const pathname = usePathname()
+    const menus = await allMenuFooter()
 
     return (
         <footer className='mt-3 bg-gray-200 flex flex-col justify-center items-center px-4 md:flex-row-reverse md:justify-between'>

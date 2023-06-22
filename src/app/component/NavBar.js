@@ -1,12 +1,20 @@
 "use client"
-
 import Link from 'next/link'
 import React from 'react'
 import Dropdowns from './Dropdowns'
 import { usePathname } from 'next/navigation'
+import { getMenuPrimary } from '../../../lib/query'
 
-const NavBar = ({ menus }) => {
+
+export async function allMenuPrimary() {
+    const menusPrimary = await getMenuPrimary();
+
+    return menusPrimary
+}
+
+const NavBar = async () => {
     const pathname = usePathname()
+    const menus = await allMenuPrimary()
 
     return (
         <nav className='hidden bg-red-500 text-white sticky top-0 z-20 md:block'>

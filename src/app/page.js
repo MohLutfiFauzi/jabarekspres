@@ -1,5 +1,3 @@
-"use client"
-
 import Post from "./component/Post"
 import LoadMoreButton from "./component/LoadMoreButton"
 import Title from "./component/Title"

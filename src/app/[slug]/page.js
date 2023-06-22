@@ -65,7 +65,7 @@ const Blog = async ({ params }) => {
                 </div>
                 {
                     featuredImage.node.mediaDetails.sizes[0].sourceUrl ?
-                        <Image src={featuredImage.node.mediaDetails.sizes[0].sourceUrl} alt={featuredImage.node.altText} width={800} height={300} className='object-cover object-top max-h-96' />
+                        <Image src={featuredImage.node.mediaDetails.sizes[0].sourceUrl} alt={featuredImage.node.altText} width={800} height={300} style={{ height: 'auto' }} className='object-cover object-top' />
                         :
                         <Image src={DefaultImage} alt="image" className='mb-5' width={800} />
                 }

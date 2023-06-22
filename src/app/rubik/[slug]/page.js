@@ -4,9 +4,8 @@ import { getPostBySlug } from "../../../../lib/query"
 import Post from '@/app/component/Post'
 import SecondaryButton from '@/app/component/LoadMoreButton'
 
-export const dynamic = 'force-dynamic'
 
-const Kategori = async ({ params }) => {
+export default async function Kategori({ params }) {
     const [posts, nameCategory] = await getPostBySlug(params.slug)
 
     if (!posts) {
@@ -16,7 +15,6 @@ const Kategori = async ({ params }) => {
             </Layout>
         )
     }
-
 
     return (
         <Layout>
@@ -32,5 +30,3 @@ const Kategori = async ({ params }) => {
         </Layout>
     )
 }
-
-export default Kategori

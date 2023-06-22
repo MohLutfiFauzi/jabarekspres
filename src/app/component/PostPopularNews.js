@@ -4,7 +4,7 @@ import React from 'react'
 import moment from 'moment'
 import 'moment-duration-format'
 
-const PopularNews = ({ title, slug, featuredImage, date }) => {
+const PostPopularNews = ({ title, slug, featuredImage, date }) => {
     const postDate = moment(date)
     const currentDate = moment()
 
@@ -42,4 +42,4 @@ const PopularNews = ({ title, slug, featuredImage, date }) => {
     )
 }
 
-export default PopularNews
+export default PostPopularNews
