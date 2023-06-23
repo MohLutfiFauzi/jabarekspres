@@ -4,8 +4,6 @@ import Title from "./component/Title"
 import Layout from "./component/Layout"
 import { getPostList } from "../../lib/query"
 
-export const dynamic = 'force-dynamic'
-
 export async function postsList() {
   const posts = await getPostList();
 
@@ -13,7 +11,7 @@ export async function postsList() {
 }
 
 export default async function Home() {
-  const [posts] = await Promise.all([postsList()])
+  const posts = await postsList()
 
   return (
     <Layout>

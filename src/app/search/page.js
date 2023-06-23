@@ -7,8 +7,6 @@ import { getPostBySearch } from "../../../lib/query"
 import SecondaryButton from '../component/LoadMoreButton'
 import Post from '../component/Post'
 
-export const dynamic = 'force-dynamic'
-
 const SearchPage = async () => {
     const search = useSearchParams()
     const searchQuery = search ? search?.get('q') : null

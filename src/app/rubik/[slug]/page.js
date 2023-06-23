@@ -4,7 +4,6 @@ import { getPostBySlug } from "../../../../lib/query"
 import Post from '@/app/component/Post'
 import SecondaryButton from '@/app/component/LoadMoreButton'
 
-
 export default async function Kategori({ params }) {
     const [posts, nameCategory] = await getPostBySlug(params.slug)
 

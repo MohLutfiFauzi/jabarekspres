@@ -4,8 +4,6 @@ import { getPostByAuthor } from "../../../../lib/query"
 import Post from '@/app/component/Post'
 import SecondaryButton from '@/app/component/LoadMoreButton'
 
-export const dynamic = 'force-dynamic'
-
 const Author = async ({ params }) => {
     const posts = await getPostByAuthor(params.slug)
 

@@ -16,7 +16,7 @@ const Footer = async () => {
     const menus = await allMenuFooter()
 
     return (
-        <footer className='mt-3 bg-gray-200 flex flex-col justify-center items-center px-4 md:flex-row-reverse md:justify-between'>
+        <footer className='mt-3 p-2 bg-gray-200 flex flex-col justify-center items-center px-4 md:flex-row-reverse md:justify-between'>
             <nav className='flex flex-wrap justify-center'>
                 {menus.map((menu) => {
                     return (
