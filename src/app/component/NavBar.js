@@ -5,6 +5,7 @@ import Dropdowns from './Dropdowns'
 import { usePathname } from 'next/navigation'
 import { getMenuPrimary } from '../../../lib/query'
 
+import { use } from 'react'
 
 export async function allMenuPrimary() {
     const menusPrimary = await getMenuPrimary();
@@ -12,9 +13,11 @@ export async function allMenuPrimary() {
     return menusPrimary
 }
 
-const NavBar = async () => {
+const menuPrimaryPromise = allMenuPrimary()
+
+const NavBar = () => {
     const pathname = usePathname()
-    const menus = await allMenuPrimary()
+    const menus = use(menuPrimaryPromise)
 
     return (
         <nav className='hidden bg-red-500 text-white sticky top-0 z-20 md:block'>

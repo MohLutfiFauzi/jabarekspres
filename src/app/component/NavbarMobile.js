@@ -6,16 +6,20 @@ import { HiBars3, HiXMark, HiChevronDown, HiChevronUp } from 'react-icons/hi2'
 import Link from 'next/link'
 import { getMenuPrimary } from '../../../lib/query'
 
+import { use } from 'react'
+
 export async function allMenuPrimary() {
     const menusPrimary = await getMenuPrimary();
 
     return menusPrimary
 }
 
-const NavbarMobile = async () => {
+const menuPrimaryPromise = allMenuPrimary()
+
+const NavbarMobile = () => {
     const [toggle, setToggle] = useState(false)
     const [toggleSubMenu, setToggleSubMenu] = useState(false)
-    const menus = await allMenuPrimary()
+    const menus = use(menuPrimaryPromise)
 
     const handleToggle = () => {
         setToggle(!toggle);
