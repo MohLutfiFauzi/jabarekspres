@@ -1,4 +1,6 @@
 'use client'
+import { use } from 'react'
+
 import Image from 'next/image'
 import React, { useState } from 'react'
 import logo from '/public/images/rakcer-logo.png'
@@ -6,7 +8,6 @@ import { HiBars3, HiXMark, HiChevronDown, HiChevronUp } from 'react-icons/hi2'
 import Link from 'next/link'
 import { getMenuPrimary } from '../../../lib/query'
 
-import { use } from 'react'
 
 export async function allMenuPrimary() {
     const menusPrimary = await getMenuPrimary();
@@ -14,7 +15,7 @@ export async function allMenuPrimary() {
     return menusPrimary
 }
 
-const menuPrimaryPromise = allMenuPrimary()
+const menuPrimaryPromise = getMenuPrimary()
 
 const NavbarMobile = () => {
     const [toggle, setToggle] = useState(false)

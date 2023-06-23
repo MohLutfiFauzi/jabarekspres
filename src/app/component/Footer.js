@@ -1,19 +1,22 @@
 "use client"
+import { use } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import { getMenuFooter } from '../../../lib/query'
 
-export async function allMenuFooter() {
+async function allMenuFooter() {
     const menuFooter = await getMenuFooter();
 
     return menuFooter
 }
 
+const menuFooterPromise = allMenuFooter()
 
-const Footer = async () => {
+
+const Footer = () => {
     const pathname = usePathname()
-    const menus = await allMenuFooter()
+    const menus = use(menuFooterPromise)
 
     return (
         <footer className='mt-3 p-2 bg-gray-200 flex flex-col justify-center items-center px-4 md:flex-row-reverse md:justify-between'>

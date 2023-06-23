@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
                 <Logo />
             </Link>
             <NavBar />
-            <NavbarMobile />
+            <NavbarMobile s />
             <div className="lg:flex">
                 <div className="flex-auto max-w-3xl">
                     {children}

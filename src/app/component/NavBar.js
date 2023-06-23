@@ -1,11 +1,10 @@
 "use client"
+import { use } from 'react'
 import Link from 'next/link'
 import React from 'react'
 import Dropdowns from './Dropdowns'
 import { usePathname } from 'next/navigation'
 import { getMenuPrimary } from '../../../lib/query'
-
-import { use } from 'react'
 
 export async function allMenuPrimary() {
     const menusPrimary = await getMenuPrimary();
