@@ -4,26 +4,37 @@ import Image from 'next/image'
 import Link from 'next/link'
 import moment from 'moment'
 import 'moment-duration-format'
+import { useEffect, useState } from 'react'
 
 const PostPopularNews = ({ title, slug, featuredImage, date }) => {
-    const postDate = moment(date)
-    const currentDate = moment()
+    const [formattedDuration, setFormattedDuration] = useState('')
 
-    const duration = moment.duration(currentDate.diff(postDate));
-    // Menghitung selisih waktu dalam menit, jam, atau hari
-    const minutesAgo = duration.asMinutes();
-    const hoursAgo = duration.asHours();
-    const daysAgo = duration.asDays();
+    useEffect(() => {
+        const postDate = moment(date);
+        const currentDate = moment();
 
-    // Menentukan format waktu berdasarkan selisih waktu
-    let formattedDuration;
-    if (minutesAgo < 60) {
-        formattedDuration = moment.duration(minutesAgo, 'minutes').format('m [menit yang lalu]');
-    } else if (hoursAgo < 24) {
-        formattedDuration = moment.duration(hoursAgo, 'hours').format('h [jam yang lalu]');
-    } else {
-        formattedDuration = moment.duration(daysAgo, 'days').format('D [hari yang lalu]');
-    }
+        const duration = moment.duration(currentDate.diff(postDate));
+        const minutesAgo = duration.asMinutes();
+        const hoursAgo = duration.asHours();
+        const daysAgo = duration.asDays();
+
+        let formattedDuration;
+        if (minutesAgo < 60) {
+            formattedDuration = moment
+                .duration(minutesAgo, 'minutes')
+                .format('m [menit yang lalu]');
+        } else if (hoursAgo < 24) {
+            formattedDuration = moment
+                .duration(hoursAgo, 'hours')
+                .format('h [jam yang lalu]');
+        } else {
+            formattedDuration = moment
+                .duration(daysAgo, 'days')
+                .format('D [hari yang lalu]');
+        }
+
+        setFormattedDuration(formattedDuration);
+    }, [date]);
 
     return (
         <div className='flex mb-4 mr-2'>
