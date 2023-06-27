@@ -2,7 +2,6 @@ import Layout from '@/app/component/Layout'
 import React from 'react'
 import { getPostBySlug } from "../../../../lib/query"
 import Post from '@/app/component/Post'
-import SecondaryButton from '@/app/component/LoadMoreButton'
 
 export const revalidate = 60
 
@@ -26,7 +25,6 @@ export default async function Kategori({ params }) {
                         <Post key={post.slug} {...post}>{post.title}</Post>
                     ))
                 }
-                <SecondaryButton />
             </div>
         </Layout>
     )

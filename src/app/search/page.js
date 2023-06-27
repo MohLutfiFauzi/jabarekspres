@@ -4,7 +4,6 @@ import React from 'react'
 import Layout from '../component/Layout'
 import { useSearchParams } from 'next/navigation'
 import { getPostBySearch } from "../../../lib/query"
-import SecondaryButton from '../component/LoadMoreButton'
 import Post from '../component/Post'
 
 const SearchPage = async () => {
@@ -30,7 +29,6 @@ const SearchPage = async () => {
                         <Post key={post.slug} {...post}>{post.title}</Post>
                     ))
                 }
-                <SecondaryButton />
             </div>
         </Layout>
     )

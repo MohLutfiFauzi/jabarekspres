@@ -4,9 +4,9 @@ import Title from './Title'
 import { getPostList } from '../../../lib/query'
 
 export async function postsList() {
-    const posts = await getPostList();
+    const { nodes } = await getPostList();
 
-    return posts
+    return nodes
 }
 
 const AllPostPopularNews = async () => {

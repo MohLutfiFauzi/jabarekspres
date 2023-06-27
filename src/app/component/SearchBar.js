@@ -1,7 +1,8 @@
 import React from 'react'
-import DateNow from './DateNow'
 import Search from './Search'
 import PrimaryButton from './PrimaryButton'
+import dynamic from 'next/dynamic'
+const DateNow = dynamic(() => import('./DateNow'), { ssr: false })
 
 const SearchBar = () => {
     return (

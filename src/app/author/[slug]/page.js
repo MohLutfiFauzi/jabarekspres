@@ -2,7 +2,6 @@ import Layout from '@/app/component/Layout'
 import React from 'react'
 import { getPostByAuthor } from "../../../../lib/query"
 import Post from '@/app/component/Post'
-import SecondaryButton from '@/app/component/LoadMoreButton'
 
 const Author = async ({ params }) => {
     const posts = await getPostByAuthor(params.slug)
@@ -25,7 +24,6 @@ const Author = async ({ params }) => {
                         <Post key={post.slug} {...post}>{post.title}</Post>
                     ))
                 }
-                <SecondaryButton />
             </div>
         </Layout>
     )
