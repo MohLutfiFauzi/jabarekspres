@@ -11,14 +11,12 @@ export async function postsList() {
     return allPosts
 }
 
-export const revalidate = 60
-
 const postsPromise = postsList()
-
 
 const Posts = () => {
     const allPostsPromise = use(postsPromise)
     const [posts, setPosts] = useState(allPostsPromise)
+
     return (
         <>
             {

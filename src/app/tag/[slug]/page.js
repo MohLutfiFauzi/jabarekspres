@@ -1,30 +1,14 @@
 import Layout from '@/app/component/Layout'
 import React from 'react'
-import { getPostByTag } from "../../../../lib/query"
-import Post from '@/app/component/Post'
+import ListPostTags from '@/app/component/ListPostTags'
 
-const Tag = async ({ params }) => {
-    const posts = await getPostByTag(params.slug)
-    const modifiedString = params.slug.replace(/-/g, " ")
+export const revalidate = 60
 
-    if (!posts) {
-        return (
-            <Layout>
-                <div className='m-3'>Tag tidak ada</div>
-            </Layout>
-        )
-    }
-
-
+const Tag = ({ params }) => {
     return (
         <Layout>
             <div className='m-3'>
-                <h2 className='font-semibold text-lg'>Tag : {modifiedString}</h2>
-                {
-                    posts.map((post) => (
-                        <Post key={post.slug} {...post}>{post.title}</Post>
-                    ))
-                }
+                <ListPostTags slug={params.slug} />
             </div>
         </Layout>
     )

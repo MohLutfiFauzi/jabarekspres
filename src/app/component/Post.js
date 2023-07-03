@@ -3,10 +3,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import moment from 'moment'
+import defaultImage from './../../../public/images/default.jpg'
 import 'moment-duration-format'
 import { useEffect, useState } from 'react'
 
 const Post = ({ title, excerpt, slug, featuredImage, date }) => {
+
     const [formattedDuration, setFormattedDuration] = useState('')
 
     useEffect(() => {
@@ -39,14 +41,18 @@ const Post = ({ title, excerpt, slug, featuredImage, date }) => {
     return (
         <div className='flex mt-4'>
             {
-                featuredImage.node.mediaDetails.sizes[0].sourceUrl ?
+                featuredImage?.node?.mediaDetails?.sizes[0]?.sourceUrl ?
                     <Link href={slug} className='mr-2 mb-4' as={`/${slug}`}>
                         <div className='relative w-20 h-20 md:w-32 md:h-32 lg:w-44 lg:h-44 '>
-                            <Image src={featuredImage.node.mediaDetails.sizes[0]?.sourceUrl} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} preload="true" placeholder="blur" blurDataURL={featuredImage.node.mediaDetails.sizes[0]?.sourceUrl} alt={featuredImage.node.altText ? featuredImage.node.altText : 'image'} />
+                            <Image src={featuredImage.node.mediaDetails.sizes[0]?.sourceUrl} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} preload="true" placeholder="blur" blurDataURL={featuredImage.node.mediaDetails.sizes[0]?.sourceUrl} alt={featuredImage.node.altText} />
                         </div>
                     </Link>
                     :
-                    null
+                    <Link href={slug} className='mr-2 mb-4' as={`/${slug}`}>
+                        <div className='relative w-20 h-20 md:w-32 md:h-32 lg:w-44 lg:h-44 '>
+                            <Image src={defaultImage} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} preload="true" placeholder="blur" alt='default image' />
+                        </div>
+                    </Link>
             }
             <div>
                 <Link href={slug} as={`/${slug}`} className='text-base md:text-2xl font-semibold hover:text-red-500'>{title}</Link>

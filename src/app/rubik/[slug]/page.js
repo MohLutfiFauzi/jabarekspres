@@ -1,31 +1,17 @@
 import Layout from '@/app/component/Layout'
 import React from 'react'
-import { getPostBySlug } from "../../../../lib/query"
-import Post from '@/app/component/Post'
+import ListCategory from '@/app/component/ListCategory'
 
 export const revalidate = 60
 
-export default async function Kategori({ params }) {
-    const [posts, nameCategory] = await getPostBySlug(params.slug)
-
-    if (!posts) {
-        return (
-            <Layout>
-                <div className='m-3'>Kategori tidak ada</div>
-            </Layout>
-        )
-    }
-
+const Kategori = ({ params }) => {
     return (
         <Layout>
             <div className='m-3'>
-                <h2 className='font-semibold text-lg'>Kategori : {nameCategory}</h2>
-                {
-                    posts.map((post) => (
-                        <Post key={post.slug} {...post}>{post.title}</Post>
-                    ))
-                }
+                <ListCategory slug={params.slug} />
             </div>
         </Layout>
     )
 }
+
+export default Kategori

@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from "../component/Layout"
-import DefaultImage from "../../../public/images/default.jpg"
+import defaultImage from "../../../public/images/default.jpg"
 import Link from 'next/link'
 import Image from 'next/image'
 import { getSinglePost, getForMetadata, getStaticPage } from "../../../lib/query"
@@ -64,10 +64,10 @@ const Blog = async ({ params }) => {
                     <p>{formattedDate}</p>
                 </div>
                 {
-                    featuredImage.node.mediaDetails.sizes[0].sourceUrl ?
+                    featuredImage?.node?.mediaDetails?.sizes[0]?.sourceUrl ?
                         <Image src={featuredImage.node.mediaDetails.sizes[0].sourceUrl} alt={featuredImage.node.altText} width={800} height={300} style={{ height: 'auto' }} className='object-cover object-top' />
                         :
-                        <Image src={DefaultImage} alt="image" className='mb-5' width={800} />
+                        <Image src={defaultImage} alt="image" className='mb-5' width={800} />
                 }
                 <div dangerouslySetInnerHTML={{ __html: content }} className='post-content mt-3' />
                 <hr className='mt-4 mb-2' />

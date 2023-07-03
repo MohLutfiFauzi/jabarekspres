@@ -1,7 +1,8 @@
 import Title from "./component/Title"
 import Layout from "./component/Layout"
 import { getPostList } from "../../lib/query"
-import Posts from "./component/Posts"
+import dynamic from "next/dynamic"
+const Posts = dynamic(() => import('./component/Posts'), { ssr: false })
 
 export async function postsList() {
   const { nodes } = await getPostList();
