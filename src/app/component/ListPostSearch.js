@@ -16,8 +16,8 @@ const ListPostSearch = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        if (data && data.posts && data.posts.nodes) {
-            setPosts(data.posts.nodes);
+        if (data && data.posts) {
+            setPosts(data.posts);
         }
     }, [data]);
 
@@ -36,12 +36,12 @@ const ListPostSearch = () => {
                     {data?.posts?.nodes.length !== 0 ? (
                         <>
                             <h2 className='font-semibold text-lg'>Pencarian: {searchQuery}</h2>
-                            {posts.map((post) => (
+                            {posts?.nodes?.map((post) => (
                                 <Post key={post.slug} {...post}>
                                     {post.title}
                                 </Post>
                             ))}
-                            <LoadMoreButton posts={posts} setPosts={setPosts} />
+                            <LoadMoreButton posts={posts} setPosts={setPosts} type={'search'} slug={searchQuery} />
                         </>
                     ) : (
                         <h2 className='font-semibold text-lg'>

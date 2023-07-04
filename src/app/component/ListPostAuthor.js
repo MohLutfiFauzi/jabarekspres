@@ -37,7 +37,7 @@ const ListPostAuthor = ({ slug }) => {
                                     {post.title}
                                 </Post>
                             ))}
-                            <LoadMoreButton posts={posts} setPosts={setPosts} />
+                            <LoadMoreButton posts={posts} setPosts={setPosts} type={'author'} slug={slug} />
                         </>
                     ) : (
                         <h2 className='font-semibold text-lg'>

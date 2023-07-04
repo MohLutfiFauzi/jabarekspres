@@ -1,6 +1,6 @@
 import Layout from '@/app/component/Layout'
 import React from 'react'
-import ListCategory from '@/app/component/ListCategory'
+import ListPostCategory from '@/app/component/ListPostCategory'
 
 export const revalidate = 60
 
@@ -8,7 +8,7 @@ const Kategori = ({ params }) => {
     return (
         <Layout>
             <div className='m-3'>
-                <ListCategory slug={params.slug} />
+                <ListPostCategory slug={params.slug} />
             </div>
         </Layout>
     )

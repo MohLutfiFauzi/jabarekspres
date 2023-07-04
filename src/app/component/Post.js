@@ -16,12 +16,17 @@ const Post = ({ title, excerpt, slug, featuredImage, date }) => {
         const currentDate = moment();
 
         const duration = moment.duration(currentDate.diff(postDate));
+        const secondsAgo = duration.asSeconds();
         const minutesAgo = duration.asMinutes();
         const hoursAgo = duration.asHours();
         const daysAgo = duration.asDays();
 
         let formattedDuration;
-        if (minutesAgo < 60) {
+        if (secondsAgo < 60) {
+            formattedDuration = moment
+                .duration(secondsAgo, 'seconds')
+                .format('s [detik yang lalu]');
+        } else if (minutesAgo < 60) {
             formattedDuration = moment
                 .duration(minutesAgo, 'minutes')
                 .format('m [menit yang lalu]');

@@ -7,7 +7,7 @@ import LoadMoreButton from "./LoadMoreButton"
 import Post from "./Post"
 import { useEffect, useState } from "react"
 
-const ListCategory = ({ slug }) => {
+const ListPostCategory = ({ slug }) => {
     const query = getPostByCategory(slug);
     const { data, error } = useSWR(query, request);
     const [posts, setPosts] = useState([])
@@ -38,7 +38,7 @@ const ListCategory = ({ slug }) => {
                                     {post.title}
                                 </Post>
                             ))}
-                            <LoadMoreButton posts={posts} setPosts={setPosts} />
+                            <LoadMoreButton posts={posts} setPosts={setPosts} type={'category'} slug={slug} />
                         </>
                     ) : (
                         <h2 className='font-semibold text-lg'>
@@ -53,4 +53,4 @@ const ListCategory = ({ slug }) => {
     )
 }
 
-export default ListCategory
+export default ListPostCategory

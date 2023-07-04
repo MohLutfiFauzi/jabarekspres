@@ -2,19 +2,19 @@
 
 import useSWR from "swr"
 import { request } from "../../../lib/graphql"
-import { getPostByTag } from "../../../lib/queries"
+import { getPostList } from "../../../lib/queries"
 import LoadMoreButton from "./LoadMoreButton"
 import Post from "./Post"
 import { useEffect, useState } from "react"
 
-const ListPostTags = ({ slug }) => {
-    const query = getPostByTag(slug);
+const Posts = () => {
+    const query = getPostList();
     const { data, error } = useSWR(query, request);
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        if (data && data.tag && data.tag.posts) {
-            setPosts(data.tag.posts);
+        if (data && data.posts) {
+            setPosts(data.posts);
         }
     }, [data]);
 
@@ -30,15 +30,14 @@ const ListPostTags = ({ slug }) => {
         <>
             {data ? (
                 <>
-                    {data.tag ? (
+                    {data.posts ? (
                         <>
-                            <h2 className='font-semibold text-lg'>Tag: {data.tag.name}</h2>
                             {posts?.nodes?.map((post) => (
                                 <Post key={post.slug} {...post}>
                                     {post.title}
                                 </Post>
                             ))}
-                            <LoadMoreButton posts={posts} setPosts={setPosts} type={'tags'} slug={slug} />
+                            <LoadMoreButton posts={posts} setPosts={setPosts} type={'posts'} />
                         </>
                     ) : (
                         <h2 className='font-semibold text-lg'>
@@ -53,4 +52,4 @@ const ListPostTags = ({ slug }) => {
     )
 }
 
-export default ListPostTags
+export default Posts
