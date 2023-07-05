@@ -27,7 +27,7 @@
     ::-webkit-scrollbar {
         height: 6px;
       }
-}
+  }
 
 @layer utilities {
   .post-content p {
