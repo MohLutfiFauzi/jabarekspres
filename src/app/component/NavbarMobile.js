@@ -8,7 +8,7 @@ import { HiBars3, HiXMark, HiChevronDown, HiChevronUp, HiMagnifyingGlass } from 
 import Link from 'next/link'
 import { getMenuPrimary } from '../../../lib/query'
 import Search from './Search'
-
+import { usePathname } from 'next/navigation'
 
 export async function allMenuPrimary() {
     const menusPrimary = await getMenuPrimary();
@@ -23,6 +23,7 @@ const NavbarMobile = () => {
     const [toggleSubMenu, setToggleSubMenu] = useState(false)
     const [toggleSearch, setToggleSearch] = useState(false)
     const menus = use(menuPrimaryPromise)
+    const pathname = usePathname()
 
     const handleToggle = () => {
         setToggle(!toggle);
@@ -70,9 +71,11 @@ const NavbarMobile = () => {
                     <nav className={`sticky  ${toggleSearch ? 'top-28' : 'top-16'} z-10 md:hidden`}>
                         {
                             menus.map((menu) => {
+                                const isActive = pathname === '/' ? '/' : `${pathname}/`
+
                                 if (menu.children.length === 0) {
                                     return (
-                                        <Link href={menu.uri} className='px-2 py-2 w-full inline-block text-white font-semibold bg-red-500 hover:bg-red-600' key={menu.key}>{menu.title}</Link>
+                                        <Link href={menu.uri} className={isActive === menu.uri ? 'px-2 py-2 w-full inline-block text-white font-semibold bg-red-600 hover:bg-red-600' : 'px-2 py-2 w-full inline-block text-white font-semibold bg-red-500 hover:bg-red-600'} key={menu.key}>{menu.title}</Link>
                                     )
                                 } else {
                                     return (
@@ -91,7 +94,7 @@ const NavbarMobile = () => {
                                             {
                                                 toggleSubMenu ?
                                                     menu.children.map(menuItem => (
-                                                        <Link key={menuItem.key} href={menuItem.uri} className='px-2 py-2 w-full inline-block text-white font-semibold bg-red-500 hover:bg-red-600 '>{menuItem.title}</Link>
+                                                        <Link key={menuItem.key} href={menuItem.uri} className={isActive === menuItem.uri ? 'px-2 py-2 w-full inline-block text-white font-semibold bg-red-600 hover:bg-red-600 ' : 'px-2 py-2 w-full inline-block text-white font-semibold bg-red-500 hover:bg-red-600 '}>{menuItem.title}</Link>
                                                     ))
                                                     :
                                                     null

@@ -3,8 +3,11 @@ import React from 'react'
 import { Menu } from '@headlessui/react'
 import { HiChevronDown } from 'react-icons/hi2'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Dropdowns({ menu }) {
+    const pathname = usePathname()
+
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
@@ -16,11 +19,13 @@ export default function Dropdowns({ menu }) {
 
             <Menu.Items className="absolute left-0 z-10 w-36 origin-top-right bg-red-500 shadow-lg ">
                 {
-                    menu.children.map(menuItem => (
-                        <Menu.Item key={menuItem.key}>
-                            <Link href={menuItem.uri} className='px-2 py-2 w-full inline-block hover:bg-red-600'>{menuItem.title}</Link>
-                        </Menu.Item>
-                    ))
+                    menu.children.map(menuItem => {
+                        return (
+                            <Menu.Item key={menuItem.key}>
+                                <Link href={menuItem.uri} className={`${pathname}/` === menuItem.uri ? 'px-2 py-2 w-full inline-block hover:bg-red-600 bg-red-600' : 'px-2 py-2 w-full inline-block hover:bg-red-600'}>{menuItem.title}</Link>
+                            </Menu.Item>
+                        )
+                    })
                 }
             </Menu.Items>
         </Menu>
