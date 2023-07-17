@@ -8,11 +8,24 @@ import Tag from '../component/Tag'
 import moment from 'moment'
 
 export async function generateMetadata({ params }) {
-    const metadata = await getForMetadata(params.slug)
+    const apiUrl = `https://rakcer.id/wp-json/rankmath/v1/getHead?url=https://rakcer.id/${params.slug}`;
 
-    return {
-        title: metadata?.title ? metadata.title : 'Rakcer',
-        description: metadata?.excerpt ? metadata.excerpt : 'Rakcer'
+    try {
+        const response = await fetch(apiUrl);
+        if (response.ok) {
+            const metadata = await response.json();
+            return {
+                title: metadata?.head?.match(/<title>(.*?)<\/title>/)?.[1] || 'Rakcer',
+                description: metadata?.head?.match(/<meta name="description" content="(.*?)"/)?.[1] || 'Rakcer'
+            };
+        }
+        throw new Error('Request failed');
+    } catch (error) {
+        console.error(error);
+        return {
+            title: 'Rakcer',
+            description: 'Rakcer'
+        };
     }
 }
 
